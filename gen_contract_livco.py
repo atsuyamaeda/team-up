@@ -15,13 +15,15 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import HexColor, black
 
 # ── フォント登録 ──────────────────────────────────────────────
-FONT_REGULAR = '/Users/maedaatsuya/Downloads/NotoSerifJP-Regular.ttf'
-FONT_LIGHT   = '/Users/maedaatsuya/Downloads/NotoSerifJP-Light.ttf'
+import os as _os
+_DIR = _os.path.dirname(_os.path.abspath(__file__))
+FONT_REGULAR = _os.path.join(_DIR, 'fonts', 'NotoSerifJP-Regular.ttf')
+FONT_LIGHT   = _os.path.join(_DIR, 'fonts', 'NotoSerifJP-Light.ttf')
 pdfmetrics.registerFont(TTFont('NotoSerif',   FONT_REGULAR))
 pdfmetrics.registerFont(TTFont('NotoSerif-L', FONT_LIGHT))
 
 # ── 出力先 ────────────────────────────────────────────────────
-OUT = '/Users/maedaatsuya/team-up/contract_livco.pdf'
+OUT = _os.path.join(_DIR, 'contract_livco.pdf')
 
 # ── カラー ────────────────────────────────────────────────────
 DARK  = HexColor('#111111')
@@ -98,7 +100,7 @@ def build():
             ('body', '１．甲は乙に対し、以下の業務（以下「本業務」という）を委託し、乙はこれを受託する。'),
             ('body_indent', '（１）採用戦略の立案・企画'),
             ('body_indent', '（２）母集団形成に関する施策の企画および提案'),
-            ('body_indent', '（３）採用媒体選定およびスカウト活用方針の策定（※運用実務・送信代行を除く）'),
+            ('body_indent', '（３）採用媒体選定およびスカウト活用方針の策定'),
             ('body_indent', '（４）採用KPIの策定およびレポーティング（定例報告含む）'),
             ('body_indent', '（５）その他付随する業務'),
             ('body', '２　甲は本件業務の遂行に際し必要があるときは、乙に対し、本件業務の進捗状況などについて報告を求めることができる。'),
